@@ -24,16 +24,13 @@ public class Staff {
     @Column(name = "email", unique = true, length = 100)
     private String email;
     
-    // Many-to-One relationship with StaffRole
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id", nullable = false)
     private StaffRole staffRole;
     
-    // One-to-Many relationship with Order
     @OneToMany(mappedBy = "staff", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Order> orders;
     
-   
     public Staff() {}
     
     public Staff(String firstName, String lastName, String contactNumber, String email, StaffRole staffRole) {
@@ -99,5 +96,4 @@ public class Staff {
     public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
-    
 }

@@ -18,12 +18,10 @@ public class OrderItem {
     @Column(name = "item_price_at_order_time", nullable = false, precision = 10, scale = 2)
     private BigDecimal itemPriceAtOrderTime;
     
-    // Many-to-One relationship with Order
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
     
-    // Many-to-One relationship with MenuItem
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "item_id", nullable = false)
     private MenuItem menuItem;
@@ -38,12 +36,10 @@ public class OrderItem {
         this.menuItem = menuItem;
     }
     
-    // Calculated field for total price
     public BigDecimal getTotalPrice() {
         return itemPriceAtOrderTime.multiply(new BigDecimal(quantity));
     }
     
-   
     public Long getOrderItemId() {
         return orderItemId;
     }
@@ -83,6 +79,4 @@ public class OrderItem {
     public void setMenuItem(MenuItem menuItem) {
         this.menuItem = menuItem;
     }
-    
-   
 }

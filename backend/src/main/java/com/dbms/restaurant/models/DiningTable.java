@@ -21,7 +21,6 @@ public class DiningTable {
     @Column(name = "location", length = 50)
     private String location;
     
-    // One-to-Many relationship with Order
     @OneToMany(mappedBy = "diningTable", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Order> orders;
    
@@ -33,7 +32,6 @@ public class DiningTable {
         this.location = location;
     }
     
-
     public Long getTableId() {
         return tableId;
     }

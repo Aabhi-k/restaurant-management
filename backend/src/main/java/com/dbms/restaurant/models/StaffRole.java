@@ -18,18 +18,15 @@ public class StaffRole {
     @Column(name = "role_description", length = 255)
     private String roleDescription;
     
-    // One-to-Many relationship with Staff
     @OneToMany(mappedBy = "staffRole", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Staff> staff;
     
-   
     public StaffRole() {}
     
     public StaffRole(String roleName, String roleDescription) {
         this.roleName = roleName;
         this.roleDescription = roleDescription;
     }
-    
     
     public Long getRoleId() {
         return roleId;
@@ -62,5 +59,4 @@ public class StaffRole {
     public void setStaff(List<Staff> staff) {
         this.staff = staff;
     }
-    
 }

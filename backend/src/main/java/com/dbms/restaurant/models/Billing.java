@@ -32,17 +32,14 @@ public class Billing {
     @Column(name = "billing_time", nullable = false)
     private LocalDateTime billingTime;
     
-    // One-to-One relationship with Order
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
     
-    // Many-to-One relationship with PaymentMethod
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "payment_method_id", nullable = false)
     private PaymentMethod paymentMethod;
     
-    // Enum for Payment Status
     public enum PaymentStatus {
         PAID, UNPAID
     }

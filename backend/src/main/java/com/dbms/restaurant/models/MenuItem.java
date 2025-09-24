@@ -25,12 +25,10 @@ public class MenuItem {
     @Column(name = "availability_status", nullable = false)
     private Boolean availabilityStatus;
     
-    // Many-to-One relationship with MenuCategory
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false)
     private MenuCategory menuCategory;
     
-    // One-to-Many relationship with OrderItem
     @OneToMany(mappedBy = "menuItem", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<OrderItem> orderItems;
     
@@ -44,7 +42,7 @@ public class MenuItem {
         this.availabilityStatus = availabilityStatus;
         this.menuCategory = menuCategory;
     }
-   
+    
     public Long getItemId() {
         return itemId;
     }
@@ -100,5 +98,4 @@ public class MenuItem {
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
-   
 }

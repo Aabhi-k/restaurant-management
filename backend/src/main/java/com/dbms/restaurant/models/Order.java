@@ -20,25 +20,20 @@ public class Order {
     @Column(name = "status", nullable = false, length = 20)
     private OrderStatus status;
     
-    // Many-to-One relationship with DiningTable
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "table_id", nullable = false)
     private DiningTable diningTable;
     
-    // Many-to-One relationship with Staff
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "staff_id", nullable = false)
     private Staff staff;
     
-    // One-to-Many relationship with OrderItem
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<OrderItem> orderItems;
     
-    // One-to-One relationship with Billing
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Billing billing;
     
-    // Enum for Order Status
     public enum OrderStatus {
         PENDING, PREPARING, SERVED, CLOSED
     }
@@ -54,7 +49,6 @@ public class Order {
         this.diningTable = diningTable;
         this.staff = staff;
     }
-    
     
     public Long getOrderId() {
         return orderId;
@@ -111,6 +105,4 @@ public class Order {
     public void setBilling(Billing billing) {
         this.billing = billing;
     }
-    
-   
 }

@@ -18,10 +18,8 @@ public class PaymentMethod {
     @Column(name = "method_description", length = 255)
     private String methodDescription;
     
-    // One-to-Many relationship with Billing
     @OneToMany(mappedBy = "paymentMethod", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Billing> billings;
-    
     
     public PaymentMethod() {}
     

@@ -18,7 +18,6 @@ public class MenuCategory {
     @Column(name = "category_description", length = 255)
     private String categoryDescription;
     
-    // One-to-Many relationship with MenuItem
     @OneToMany(mappedBy = "menuCategory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MenuItem> menuItems;
     
@@ -30,7 +29,6 @@ public class MenuCategory {
         this.categoryDescription = categoryDescription;
     }
     
-
     public Long getCategoryId() {
         return categoryId;
     }
